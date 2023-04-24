@@ -228,7 +228,7 @@ async function displayCalendarWithHolidays(year, month) {
     updateMonthName(year, month);
 }
 
-function changeMonth(delta) {
+async function changeMonth(delta) {
     const currentYear = parseInt(document.getElementById('monthName').getAttribute('data-year'));
     const currentMonth = parseInt(document.getElementById('monthName').getAttribute('data-month'));
 
@@ -236,7 +236,10 @@ function changeMonth(delta) {
     const newYear = newDate.getFullYear();
     const newMonth = newDate.getMonth() + 1;
 
-    displayCalendarWithHolidays(newYear, newMonth);
+    if (newYear !== currentYear) {
+        await fetchHolidaysForYear(newYear);
+    }
+    await displayCalendarWithHolidays(newYear, newMonth);
 
     // Get the active button and move the mouse cursor to it
     const activeBtn = delta > 0 ? document.getElementById('nextMonthBtn') : document.getElementById('prevMonthBtn');
