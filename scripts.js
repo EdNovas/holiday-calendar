@@ -13,7 +13,6 @@ async function fetchCountryCode() {
 }
 
 
-
 function getCurrentDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -63,6 +62,16 @@ const API_KEY = '5d943f26cc74ac138a194c382da194735602ef36';
 
 async function fetchHolidaysForYear(year) {
     const country = await fetchCountryCode();
+    try {
+        const response = await fetch(`./${country}_${year}.json`);
+        if (response.ok) {
+            const data = await response.json();
+            holidays = data.response.holidays;
+            return;
+        }
+    } catch (error) {
+        console.log(error);
+    }
     const response = await fetch(`https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=${country}&year=${year}`);
     const data = await response.json();
     holidays = data.response.holidays;
