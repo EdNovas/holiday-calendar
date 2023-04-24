@@ -164,15 +164,17 @@ function createCalendarElement(year, month, holidays) {
 
         if (isHoliday) {
             dayElement.classList.add('holiday');
-            dayElement.title = holidays.find(holiday => holiday.date.iso === dateStr).name;
+            const holiday = holidays.find(holiday => holiday.date.iso === dateStr);
+            dayElement.title = holiday.name;
 
             const tooltipElement = document.createElement('div');
             tooltipElement.className = 'holiday-tooltip';
-            tooltipElement.textContent = holidays.find(holiday => holiday.date.iso === dateStr).name;
+            tooltipElement.innerHTML = `<strong class="holiday-title">${holiday.name}</strong>${holiday.description || 'No description available.'}`;
+            // tooltipElement.textContent = holidays.find(holiday => holiday.date.iso === dateStr).name;
             dayElement.appendChild(tooltipElement);
 
             dayElement.addEventListener('click', () => {
-                openHolidayPage(holidays.find(holiday => holiday.date.iso === dateStr).name);
+                openHolidayPage(holiday.name);
             });
         }
 
@@ -246,6 +248,14 @@ async function changeMonth(delta) {
     activeBtn.focus();
 }
 
+function jumpToToday() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+
+    displayCalendarWithHolidays(year, month);
+}
+
 // Initialize the calendar with the current year and month
 const now = new Date();
 const year = now.getFullYear();
@@ -257,3 +267,4 @@ fetchHolidaysForYear(year).then(() => displayCalendarWithHolidays(year, month));
 // Add event listeners for the navigation buttons
 document.getElementById('prevMonthBtn').addEventListener('click', () => changeMonth(-1));
 document.getElementById('nextMonthBtn').addEventListener('click', () => changeMonth(1));
+document.getElementById('jumpToTodayBtn').addEventListener('click', jumpToToday);

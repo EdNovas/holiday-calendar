@@ -130,13 +130,58 @@ h1 {
     white-space: nowrap;
     z-index: 10;
     margin-bottom: 5px;
+
+    width: 200px;
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+    padding: 15px;
 }
+
+.holiday-title {
+    margin: 6px;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
 
 .calendar .day-of-week {
     font-weight: bold;
     text-align: center;
     background-color: #fad3d3;
+}
 
+
+a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #000000;
+    font-size: 14px;
+    border-radius: 60px;
+    border: 2px solid #000000;
+    box-shadow: -2px -2px 8px rgba(255, 255, 255, 1),
+                -2px -2px 12px rgba(255, 255, 255, 0.5),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+                2px 2px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 12px;
+}
+  
+a:hover {
+    box-shadow: inset -2px -2px 8px rgba(255, 255, 255, 1),
+                inset -2px -2px 12px rgba(255, 255, 255, 0.5),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+                inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+a:hover span {
+    display: inline-block;
+    transform: scale(0.98);
 }
 
 @media only screen and (max-width: 768px) {
@@ -163,4 +208,3 @@ h1 {
       margin-top: 200px;
     }
 }
-  
