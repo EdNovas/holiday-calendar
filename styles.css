@@ -38,6 +38,8 @@ h1 {
 
 .calendar-container {
     margin-top: 50px;
+    max-height: 100%;
+    overflow: auto;
 }
   
 
@@ -157,3 +159,10 @@ h1 {
         gap: 3px;
     }
 }
+
+@media screen and (max-height: 600px) {
+    .container {
+      margin-top: 200px;
+    }
+}
+  
