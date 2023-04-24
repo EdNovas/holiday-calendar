@@ -11,6 +11,10 @@ body {
 }
 
 .container {
+    opacity: 0.93;
+}
+
+.container {
     text-align: center;
     background-color: white;
     padding: 40px;
