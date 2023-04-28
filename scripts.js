@@ -251,12 +251,12 @@ async function changeMonth(delta) {
     activeBtn.focus();
 }
 
-function jumpToToday() {
+async function jumpToToday() {
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
-
-    displayCalendarWithHolidays(year, month);
+    await fetchHolidaysForYear(year);
+    await displayCalendarWithHolidays(year, month);
 }
 
 // Initialize the calendar with the current year and month
