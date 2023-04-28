@@ -158,7 +158,10 @@ function createCalendarElement(year, month, holidays) {
         dayElement.textContent = day;
 
         // Check if the date is today and highlight it
-        if (year === todayYear && month === todayMonth && day === todayDay) {
+        if (year === todayYear && month === todayMonth && day === todayDay && isHoliday) {
+            dayElement.classList.add('holiday_today');
+        }
+        if (year === todayYear && month === todayMonth && day === todayDay && !isHoliday){
             dayElement.classList.add('today');
         }
 
