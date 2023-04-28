@@ -85,7 +85,7 @@ h1 {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    box-shadow: 18px 18px 30px rgba(0, 0, 0, 0.2), -18px -18px 30px rgba(255, 255, 255, 1);
+    /* box-shadow: 18px 18px 30px rgba(0, 0, 0, 0.2), -18px -18px 30px rgba(255, 255, 255, 1); */
     transition: all 0.2s ease-in-out;
 }
 
